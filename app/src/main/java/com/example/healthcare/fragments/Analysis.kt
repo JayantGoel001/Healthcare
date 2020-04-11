@@ -65,7 +65,7 @@ class Analysis : Fragment() {
                 switchBetweenGridLin.setOnClickListener {
                     if (LayoutType==0)
                     {
-                        view.recyclerView.layoutManager = StaggeredGridLayoutManager(2,RecyclerView.VERTICAL)
+                        view.recyclerView.layoutManager = GridLayoutManager(context,2,RecyclerView.VERTICAL,false)
                         LayoutType=1
                         switchBetweenGridLin.setBackgroundResource(R.drawable.ic_view_headline_black_24dp)
                         adapter = My_adapter(mcontext, list, vib,LayoutType)
