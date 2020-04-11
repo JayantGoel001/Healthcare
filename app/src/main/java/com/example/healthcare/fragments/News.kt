@@ -13,6 +13,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -92,7 +93,6 @@ class News : Fragment() {
                 val users = gson.fromJson(response, User::class.java)
 
                 val adapter = My_adapter_analysis(mcontext, users)
-
                 view.recyclerView_analysis.visibility = RecyclerView.VISIBLE
                 view.progressBar_analysis.visibility = RecyclerView.GONE
                 view.recyclerView_analysis.layoutManager = LinearLayoutManager(mcontext)
@@ -123,6 +123,7 @@ class News : Fragment() {
         val list = mutableListOf(R.drawable.prevention, R.drawable.symptoms,
             R.drawable.corona1,R.drawable.corona2,R.drawable.co,R.drawable.cor
         )
+        PagerSnapHelper().attachToRecyclerView(view.recyclerView_analysis_1)
         val adapter = Adapter_horizontal(mcontext, list)
         view.recyclerView_analysis_1.adapter = adapter
         view.recyclerView_analysis_1.addItemDecoration(CirclePagerIndicatorDecoration())
