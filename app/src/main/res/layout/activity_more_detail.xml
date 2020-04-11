@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".StatsWork.MoreDetail">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/white_radius"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <TextView
+            android:id="@+id/dia_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:letterSpacing="0.09"
+            android:text="Delhi"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:id="@+id/bars"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:alpha="0"
+                android:gravity="center"
+                android:orientation="horizontal"
+                tools:ignore="UselessParent">
+
+                <TextView
+                    android:id="@+id/bar_before"
+                    android:layout_width="20dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@color/green"
+                    android:gravity="top|center_horizontal"
+                    android:text="Y"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    tools:ignore="SpUsage" />
+
+                <TextView
+                    android:id="@+id/bar_now"
+                    android:layout_width="20dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@color/green"
+                    android:gravity="top|center_horizontal"
+                    android:text="T"
+                    android:textColor="@color/black"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+                    tools:ignore="SpUsage" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignBottom="@+id/bars"
+                android:layout_marginStart="50dp"
+                android:layout_marginEnd="50dp"
+                android:background="@color/green" />
+
+            <TextView
+                android:id="@+id/dia_increase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="+213"
+                android:textColor="@color/red"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dia_increase_percent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="25dp"
+                android:drawableStart="@drawable/ic_arrow_upward_black_24dp"
+                android:fontFamily="sans-serif-medium"
+                android:maxLength="5"
+                android:text="2%"
+                android:textColor="@color/red"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/dia_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="01-02-2020"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_weight="2"
+                android:gravity="start"
+                android:text="Total Confirmed"
+                android:textColor="@color/black"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/dia_confirm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="2020"
+                android:textColor="@color/purple"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_weight="2"
+                android:gravity="start"
+                android:text="Active Cases"
+                android:textColor="@color/black"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/dia_active"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="30"
+                android:textColor="@color/orange"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_weight="2"
+                android:gravity="start"
+                android:text="Total Deaths"
+                android:textColor="@color/black"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/dia_death"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="20"
+                android:textColor="@color/red"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_weight="2"
+                android:gravity="start"
+                android:text="Total Recovered"
+                android:textColor="@color/black"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/dia_recovered"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="2020"
+                android:textColor="@color/blue"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

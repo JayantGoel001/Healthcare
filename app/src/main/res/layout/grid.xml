@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:layout_marginEnd="1dp"
+    android:elevation="0dp"
+    android:orientation="vertical"
+    android:stateListAnimator="@null"
+    app:cardCornerRadius="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginEnd="2dp"
+        android:background="@drawable/ripple_bg"
+        android:orientation="vertical">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/firstLetter"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bg"
+                android:gravity="center"
+                android:maxLength="2"
+                android:padding="10dp"
+                android:text="T"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:text="India"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:text="@string/_21_21_2020"
+                    android:textColor="#3d3e3f"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="end"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/totalInfected"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/_25000"
+                android:textColor="#EF5350"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="5dp"
+                android:contentDescription="@string/description"
+                android:padding="5dp"
+                android:src="@drawable/open" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

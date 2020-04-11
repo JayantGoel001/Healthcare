@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background" />
+
+    <eu.long1.spacetablayout.SpaceTabLayout
+        android:id="@+id/spaceTabLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:theme="@style/noRipple"
+        app:button_color="@color/bold_color"
+        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
+        app:icon_five="@drawable/ic_person_black_24dp"
+        app:icon_four="@drawable/ic_location_city_black_24dp"
+        app:icon_one="@drawable/analysis"
+        app:icon_three="@drawable/news"
+        app:icon_two="@drawable/enquire"
+        app:number_of_tabs="five"
+        app:starting_position="three"
+        app:tab_color="@color/colorPrimary" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
