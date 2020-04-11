@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">HealthCare</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="analysis">Analysis</string>
+    <string name="_125">125</string>
+    <string name="amount_donated">Amount Donated</string>
+    <string name="amount_received">Amount Received</string>
+    <string name="_1205">1205</string>
+    <string name="_9478455897">9478455897</string>
+    <string name="your_name">Your Name</string>
+    <string name="xyzheathcare_gmail_com">XYZHeathcare@gmail.com</string>
+    <string name="add_your_address">Add your address</string>
+    <string name="description">description</string>
+    <string name="retry">Retry</string>
+    <string name="network_error">Network Error</string>
+    <string name="news">NEWS</string>
+    <string name="total_infected">Total Infected</string>
+    <string name="region_name">Region Name</string>
+    <string name="_25000">25000</string>
+    <string name="_21_21_2020">21/21/2020</string>
+</resources>
