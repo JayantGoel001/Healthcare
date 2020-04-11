@@ -44,6 +44,7 @@ class News : Fragment() {
         return inflater.inflate(R.layout.fragment_news, container, false)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(vieww: View, savedInstanceState: Bundle?) {
         mcontext = activity!!.applicationContext
         que = Volley.newRequestQueue(mcontext)
@@ -121,7 +122,7 @@ class News : Fragment() {
     fun loadDataForRec1(view: View) {
 
         val list = mutableListOf(R.drawable.prevention, R.drawable.symptoms,
-            R.drawable.corona1,R.drawable.corona2,R.drawable.co,R.drawable.cor
+            R.drawable.corona1,R.drawable.corororo,R.drawable.co,R.drawable.cor
         )
         PagerSnapHelper().attachToRecyclerView(view.recyclerView_analysis_1)
         val adapter = Adapter_horizontal(mcontext, list)
