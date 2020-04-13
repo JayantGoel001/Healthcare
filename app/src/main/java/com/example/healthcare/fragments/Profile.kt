@@ -80,13 +80,11 @@ class Profile: Fragment(){
                     view.corona_positive.isChecked -> {
                         Toast.makeText(activity,"YOU ARE CORONA POSITIVE",Toast.LENGTH_SHORT).show()
                         fab.setImageResource(R.drawable.ic_corona)
-                        fab.background = ColorDrawable(R.color.colorPrimary)
                         alertDialog.dismiss()
                     }
                     view.corona_negative.isChecked -> {
                         Toast.makeText(activity,"YOU ARE CORONA NEGATIVE",Toast.LENGTH_SHORT).show()
                         fab.setImageResource(R.drawable.ic_virus)
-                        fab.background=ColorDrawable(R.color.green)
                         alertDialog.dismiss()
                     }
                     else -> {

@@ -14,7 +14,7 @@
         android:id="@+id/animation_view2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitCenter"
+        android:scaleType="fitXY"
         app:lottie_autoPlay="true"
         app:lottie_fileName="doctor_animation.json"
         app:lottie_loop="true" />
