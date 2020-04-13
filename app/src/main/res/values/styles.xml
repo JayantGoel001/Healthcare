@@ -16,5 +16,11 @@
     <style name="MySwitch">
         <item name="colorControlActivated">@color/switchColor</item>
     </style>
+    <style name="small_margin" parent="AppTheme">
+        <item name="android:layout_margin">10dp</item>
+    </style>
+    <style name="large_margin" parent="AppTheme">
+        <item name="android:layout_marginTop">30dp</item>
+    </style>
 
 </resources>
