@@ -2,6 +2,7 @@ package com.example.healthcare
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
@@ -25,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         fragmentList.add(Location())
         fragmentList.add(Profile())
 
-        val coordinatorLayout = findViewById<CoordinatorLayout>(R.id.coordinatorLayout)
         val tabLayout: SpaceTabLayout = findViewById(R.id.spaceTabLayout)
 
         val viewPager: ViewPager = findViewById(R.id.viewPager)

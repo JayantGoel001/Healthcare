@@ -6,19 +6,21 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SwitchCompat
+import androidx.fragment.app.Fragment
 import com.example.healthcare.R
 import de.hdodenhof.circleimageview.CircleImageView
 
+
+@Suppress("DEPRECATION")
 class Profile : Fragment() {
     private var  ProfileImage: CircleImageView?=null
     private val PICK_IMAGE=1234
     private var imageUri: Uri?=null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
 
@@ -30,7 +32,7 @@ class Profile : Fragment() {
             ProfileImage!!.setImageBitmap(bitmap)
         }
         ProfileImage!!.setOnClickListener{
-            val gallery: Intent = Intent()
+            val gallery = Intent()
             gallery.type = "image/*"
             gallery.action = Intent.ACTION_GET_CONTENT
             startActivityForResult(Intent.createChooser(gallery, "Select Picture"), PICK_IMAGE)
