@@ -131,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="Have You Checked India's Stats ?"
+                    android:text="@string/have_you_checked_india_s_stats"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -141,7 +141,6 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginBottom="10dp"
                     android:background="@color/black" />
-
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -160,7 +159,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="2"
                         android:gravity="start"
-                        android:text="Total Confirmed : "
+                        android:text="@string/total_confirmed"
                         android:textColor="@color/black"
                         android:textSize="22sp" />
 
@@ -173,7 +172,7 @@
                         android:layout_weight="1"
                         android:fontFamily="sans-serif-medium"
                         android:gravity="center"
-                        android:text="2020"
+                        android:text="@string/_2020"
                         android:textColor="@color/red"
                         android:textSize="22sp"
                         android:textStyle="bold" />
@@ -199,7 +198,7 @@
                         android:layout_marginStart="10dp"
                         android:layout_weight="2"
                         android:gravity="start"
-                        android:text="Today's Increase : "
+                        android:text="@string/today_s_increase"
                         android:textColor="@color/black"
                         android:textSize="22sp" />
 
@@ -212,7 +211,7 @@
                         android:layout_weight="1"
                         android:fontFamily="sans-serif-medium"
                         android:gravity="center"
-                        android:text="+20"
+                        android:text="@string/_20"
                         android:textColor="@color/red"
                         android:textSize="22sp"
                         android:textStyle="bold" />
@@ -225,7 +224,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="Checkout Latest News Here"
+                    android:text="@string/checkout_latest_news_here"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -247,7 +246,7 @@
                     android:paddingStart="10dp"
                     android:paddingEnd="10dp"
                     android:scaleType="centerCrop"
-                    android:text="Latest News"
+                    android:text="@string/latest_news"
                     android:textColor="@color/white"
                     android:textSize="22sp"
                     app:layout_collapseMode="parallax" />
@@ -272,7 +271,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#ede7df"
-        android:overScrollMode="never"
         android:paddingStart="5dp"
         android:paddingEnd="5dp"
         android:paddingBottom="5dp"

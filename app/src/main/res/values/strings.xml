@@ -20,4 +20,11 @@
     <string name="region_name">Region Name</string>
     <string name="_25000">25000</string>
     <string name="_21_21_2020">21/21/2020</string>
+    <string name="have_you_checked_india_s_stats">Have You Checked India\'s Stats ?</string>
+    <string name="total_confirmed">Total Confirmed :</string>
+    <string name="_2020">2020</string>
+    <string name="today_s_increase">Today\'s Increase :</string>
+    <string name="_20">+20</string>
+    <string name="checkout_latest_news_here">Checkout Latest News Here</string>
+    <string name="latest_news">Latest News</string>
 </resources>

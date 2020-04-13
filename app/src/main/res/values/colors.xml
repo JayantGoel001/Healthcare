@@ -30,5 +30,6 @@
     <color name="orange2">#f77b5c</color>
     <color name="purple">#8085E9</color>
     <color name="blue">#3EBDFF</color>
+    <color name="switchColor">#EF5350</color>
 
 </resources>

@@ -13,5 +13,8 @@
     <style name="noRipple" parent="Theme.MaterialComponents">
         <item name="rippleColor">@android:color/transparent</item>
     </style>
+    <style name="MySwitch">
+        <item name="colorControlActivated">@color/switchColor</item>
+    </style>
 
 </resources>

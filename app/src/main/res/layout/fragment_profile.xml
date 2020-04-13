@@ -17,10 +17,13 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <Switch
-                android:id="@+id/switch1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            <androidx.appcompat.widget.SwitchCompat
+                android:layout_gravity="end"
+                android:layout_marginTop="5dp"
+                android:id="@+id/id_switch"
+                android:layout_width="80dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_height="40dp" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/Profile_Image"
@@ -31,6 +34,7 @@
                 android:src="@mipmap/ic_launcher" />
 
             <TextView
+                android:id="@+id/id_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -108,6 +112,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="40dp">
         <LinearLayout
+            android:id="@+id/id_email_layout"
             android:orientation="horizontal"
             android:paddingStart="25dp"
             android:layout_width="match_parent"
@@ -119,6 +124,7 @@
                 android:src="@drawable/ic_email_black_24dp"
                 tools:ignore="ContentDescription" />
             <TextView
+                android:id="@+id/id_mail"
                 android:textStyle="bold"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
@@ -127,6 +133,7 @@
                 android:text="@string/xyzheathcare_gmail_com"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/id_phone_layout"
             android:layout_marginTop="25dp"
             android:orientation="horizontal"
             android:paddingStart="25dp"
@@ -140,6 +147,7 @@
                 tools:ignore="ContentDescription" />
 
             <TextView
+                android:id="@+id/id_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -148,6 +156,7 @@
                 android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/id_address_layout"
             android:layout_marginTop="25dp"
             android:orientation="horizontal"
             android:paddingStart="25dp"
@@ -160,6 +169,7 @@
                 android:src="@drawable/ic_home_black_24dp"
                 tools:ignore="ContentDescription" />
             <TextView
+                android:id="@+id/id_address"
                 android:textStyle="bold"
                 android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
