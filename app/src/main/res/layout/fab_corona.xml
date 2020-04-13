@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+    <RadioGroup
+        android:layout_margin="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/corona_positive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/corona_positive"
+            android:textSize="20sp"/>
+        <RadioButton
+            android:layout_marginTop="10dp"
+            android:id="@+id/corona_negative"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/corona_negative"
+            android:textSize="20sp"/>
+    </RadioGroup>
+    <TextView
+        android:id="@+id/error"
+        android:textColor="@color/colorAccent"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:textSize="12sp"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/id_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/sea_green"
+            android:text="@string/cancel"
+            style="@style/small_margin"
+            android:textColor="@color/graylight" />
+        <Button
+            android:id="@+id/id_saveChanges"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/sea_green"
+            style="@style/small_margin"
+            android:text="@string/save"
+            android:textColor="@color/graylight" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

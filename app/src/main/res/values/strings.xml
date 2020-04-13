@@ -1,17 +1,12 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">HealthCare</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="analysis">Analysis</string>
-    <string name="_125">125</string>
-    <string name="amount_donated">Amount Donated</string>
-    <string name="amount_received">Amount Received</string>
-    <string name="_1205">1205</string>
+
     <string name="_9478455897">9478455897</string>
-    <string name="your_name">Your Name</string>
     <string name="xyzheathcare_gmail_com">XYZHeathcare@gmail.com</string>
-    <string name="add_your_address">Add your address</string>
     <string name="description">description</string>
     <string name="retry">Retry</string>
     <string name="network_error">Network Error</string>
@@ -27,4 +22,14 @@
     <string name="_20">+20</string>
     <string name="checkout_latest_news_here">Checkout Latest News Here</string>
     <string name="latest_news">Latest News</string>
+    <string name="cancel" tools:ignore="ButtonCase">CANCEL</string>
+    <string name="save">SAVE</string>
+    <string name="corona_positive">CORONA POSITIVE</string>
+    <string name="corona_negative">CORONA NEGATIVE</string>
+    <string name="your_name">Your Name</string>
+    <string name="amount_donated">Amount Donated</string>
+    <string name="_125">125</string>
+    <string name="amount_received">Amount Received</string>
+    <string name="_1205">1205</string>
+    <string name="add_your_address">Add your address</string>
 </resources>

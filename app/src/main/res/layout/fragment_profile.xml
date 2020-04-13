@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -17,129 +18,145 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.SwitchCompat
-                android:layout_gravity="end"
-                android:layout_marginTop="5dp"
-                android:id="@+id/id_switch"
-                android:layout_width="80dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_height="40dp" />
+            <com.mahfa.dnswitch.DayNightSwitch
+                android:id="@+id/day_night_switch"
+                android:layout_width="70dp"
+                android:layout_height="35dp"
+                android:layout_margin="10dp"
+                android:layout_gravity="right"
+                tools:ignore="RtlHardcoded" />
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/Profile_Image"
+                style="@style/large_margin"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_person_black_24dp"
                 app:civ_border_color="#FF000000"
-                app:civ_border_width="1dp"
-                android:src="@mipmap/ic_launcher" />
+                app:civ_border_width="2dp" />
+
 
             <TextView
                 android:id="@+id/id_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
                 android:text="@string/your_name"
                 android:textColor="#fff"
                 android:textSize="21sp"
                 android:textStyle="bold" />
         </LinearLayout>
+
         <androidx.cardview.widget.CardView
             android:layout_width="300dp"
             android:layout_height="207dp"
-            android:elevation="5dp"
-            app:cardCornerRadius="4dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="270dp">
+            android:layout_marginTop="270dp"
+            android:elevation="5dp"
+            app:cardCornerRadius="4dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:weightSum="2"
-                android:baselineAligned="false">
+                tools:ignore="DisableBaselineAlignment">
+
                 <LinearLayout
-                    android:gravity="center"
-                    android:orientation="vertical"
                     android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_height="match_parent">
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/amount_donated"
                         android:textAlignment="center"
                         android:textSize="20sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/_125"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
                         android:paddingTop="10dp"
-                        android:textColor="@color/startblue"/>
+                        android:text="@string/_125"
+                        android:textColor="@color/startblue"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
+
                 <LinearLayout
-                    android:gravity="center"
-                    android:orientation="vertical"
                     android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:layout_height="match_parent">
+                    android:gravity="center"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/amount_received"
                         android:textAlignment="center"
-                        android:textSize="20sp"
-                        />
+                        android:textSize="20sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/_1205"
-                        android:textStyle="bold"
-                        android:textSize="20sp"
                         android:paddingTop="10dp"
-                        android:textColor="@color/startblue"/>
+                        android:text="@string/_1205"
+                        android:textColor="@color/startblue"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_marginTop="40dp">
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
+
         <LinearLayout
-            android:id="@+id/id_email_layout"
-            android:orientation="horizontal"
-            android:paddingStart="25dp"
+            android:id="@+id/id_mail_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="25dp"
             tools:ignore="RtlSymmetry,UseCompoundDrawables">
+
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:src="@drawable/ic_email_black_24dp"
                 tools:ignore="ContentDescription" />
+
             <TextView
                 android:id="@+id/id_mail"
-                android:textStyle="bold"
-                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:paddingStart="20dp"
-                android:text="@string/xyzheathcare_gmail_com"/>
+                android:text="@string/xyzheathcare_gmail_com"
+                android:textStyle="bold"
+                tools:ignore="RtlHardcoded" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/id_phone_layout"
-            android:layout_marginTop="25dp"
-            android:orientation="horizontal"
-            android:paddingStart="25dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:ignore="RtlSymmetry,UseCompoundDrawables">
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp"
+            tools:ignore="RtlHardcoded,RtlSymmetry,UseCompoundDrawables">
+
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
@@ -155,28 +172,42 @@
                 android:text="@string/_9478455897"
                 android:textStyle="bold" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/id_address_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:orientation="horizontal"
             android:paddingStart="25dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             tools:ignore="RtlSymmetry,UseCompoundDrawables">
+
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:src="@drawable/ic_home_black_24dp"
                 tools:ignore="ContentDescription" />
+
             <TextView
                 android:id="@+id/id_address"
-                android:textStyle="bold"
-                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="20dp"
-                android:text="@string/add_your_address"/>
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="@string/add_your_address"
+                android:textStyle="bold"
+                tools:ignore="MissingPrefix,RtlHardcoded" />
         </LinearLayout>
     </LinearLayout>
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:background="@color/colorPrimary"
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="14dp"
+        android:padding="1dp"
+        android:src="@drawable/ic_accessibility_black_24dp"
+        tools:ignore="RtlCompat,RtlHardcoded" />
 </LinearLayout>
