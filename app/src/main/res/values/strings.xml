@@ -32,4 +32,8 @@
     <string name="amount_received">Amount Received</string>
     <string name="_1205">1205</string>
     <string name="add_your_address">Add your address</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="login">Login</string>
+    <string name="get_code">Get Code</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
 </resources>
