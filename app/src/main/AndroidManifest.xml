@@ -20,7 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup">
-        <activity android:name=".SplashActivity"
+        <activity android:name=".LoginAct"></activity>
+        <activity
+            android:name=".SplashActivity"
             android:screenOrientation="locked">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,14 +33,10 @@
         <activity
             android:name=".StatsWork.MoreDetail"
             android:screenOrientation="locked"
-            tools:ignore="InnerclassSeparator">
-
-        </activity>
+            tools:ignore="InnerclassSeparator"></activity>
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="locked">
-
-        </activity>
+            android:screenOrientation="locked"></activity>
     </application>
 
 </manifest>
