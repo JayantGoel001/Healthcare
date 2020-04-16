@@ -13,7 +13,9 @@ class SplashActivity : AppCompatActivity() {
             override fun run() {
                 try {
                     sleep(6000)
-                    startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+                    val intent=Intent(this@SplashActivity, MainActivity::class.java)
+                    intent.flags=Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
