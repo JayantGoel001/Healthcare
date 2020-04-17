@@ -83,7 +83,6 @@ class Location : Fragment(),OnMapReadyCallback, PermissionsListener,MapboxMap.On
             locationComponent.renderMode = RenderMode.COMPASS
             initLocationEngine()
             originLocation=locationComponent.lastKnownLocation
-            originLocation?.let { setCameraPosition(it) }
         } else {
             permissionsManager = PermissionsManager(this)
             permissionsManager!!.requestLocationPermissions(requireActivity())
@@ -92,10 +91,7 @@ class Location : Fragment(),OnMapReadyCallback, PermissionsListener,MapboxMap.On
     override fun onExplanationNeeded(permissionsToExplain: List<String?>?) {
         Toast.makeText(requireContext(), "User Location Granted", Toast.LENGTH_LONG).show()
     }
-    fun setCameraPosition(location: Location)
-    {
-        mapboxMap.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(location.latitude,location.longitude),13.0))
-    }
+
     @SuppressLint("MissingPermission")
     private fun initLocationEngine() {
         locationEngine = LocationEngineProvider.getBestLocationEngine(requireContext())
