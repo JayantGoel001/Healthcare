@@ -6,8 +6,6 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-
-
     </style>
 
     <style name="noRipple" parent="Theme.MaterialComponents">
@@ -21,6 +19,12 @@
     </style>
     <style name="large_margin" parent="AppTheme">
         <item name="android:layout_marginTop">30dp</item>
+    </style>
+    <style name="AppTheme.MaterialButton" parent="Theme.MaterialComponents">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/orange</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
 </resources>
