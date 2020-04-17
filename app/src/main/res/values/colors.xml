@@ -32,4 +32,9 @@
     <color name="blue">#3EBDFF</color>
     <color name="switchColor">#EF5350</color>
     <color name="sea_green" >#EF5350</color>
+
+
+    <color name="mapBoxWhite">#FFFFFF</color>
+    <color name="mapboBlue">#4264FB</color>
+    <color name="mapboxGrayLight">#C6D2E1</color>
 </resources>
