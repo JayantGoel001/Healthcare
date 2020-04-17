@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">HealthCare</string>
+    <string name="app_name" tools:ignore="PrivateResource">HealthCare</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -36,4 +36,5 @@
     <string name="login">Login</string>
     <string name="get_code">Get Code</string>
     <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="mapbox_access_token" tools:ignore="TypographyDashes">pk.eyJ1IjoiamF5YW50Z29lbDAwMSIsImEiOiJjazU5d2NqcmoxMTY0M2ZsajlqaHhubThtIn0.1_2GclqHSeQYaCg1B4-3VA</string>
 </resources>

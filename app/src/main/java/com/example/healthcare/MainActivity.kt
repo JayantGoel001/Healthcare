@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         val tabLayout: SpaceTabLayout = findViewById(R.id.spaceTabLayout)
 
         val viewPager: ViewPager = findViewById(R.id.viewPager)
+
         tabLayout.initialize(viewPager, supportFragmentManager, fragmentList, savedInstanceState)
         tabLayout.setTabFourIcon(R.drawable.ic_location_city_black_24dp)
         tabLayout.setTabFiveIcon(R.drawable.ic_person_black_24dp)
