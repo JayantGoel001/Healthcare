@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.location.Location
 import android.os.Bundle
 import android.os.Looper.getMainLooper
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,7 @@ import com.mapbox.android.core.location.LocationEngineProvider
 import com.mapbox.android.core.location.LocationEngineRequest
 import com.mapbox.android.core.permissions.PermissionsListener
 import com.mapbox.android.core.permissions.PermissionsManager
+import com.mapbox.api.directions.v5.models.DirectionsResponse
 import com.mapbox.geojson.Point
 import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.annotations.Marker
@@ -29,6 +31,13 @@ import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions
 import com.mapbox.mapboxsdk.location.modes.CameraMode
 import com.mapbox.mapboxsdk.location.modes.RenderMode
 import com.mapbox.mapboxsdk.maps.*
+import com.mapbox.services.android.navigation.ui.v5.NavigationLauncher
+import com.mapbox.services.android.navigation.ui.v5.NavigationLauncherOptions
+import com.mapbox.services.android.navigation.ui.v5.route.NavigationMapRoute
+import com.mapbox.services.android.navigation.v5.navigation.NavigationRoute
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 @Suppress("DEPRECATION")
@@ -40,11 +49,12 @@ class Location : Fragment(),OnMapReadyCallback, PermissionsListener,MapboxMap.On
     private val callback: LocationChangeListeningActivityLocationCallback = LocationChangeListeningActivityLocationCallback(this)
     private val DEFAULT_INTERVAL_IN_MILLISECONDS = 1000L
     private val DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5
-    private lateinit var startButton:MaterialButton
+    private lateinit var startButton:Button
     private lateinit var originPosition: Point
     lateinit var destinationPosition:Point
     lateinit var destinationMarker:Marker
     private var originLocation:Location?=null
+    private var navigationMapRouter:NavigationMapRoute?=null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Mapbox.getInstance(requireContext(), getString(R.string.mapbox_access_token))
@@ -54,9 +64,46 @@ class Location : Fragment(),OnMapReadyCallback, PermissionsListener,MapboxMap.On
         mapView.getMapAsync(this)
         startButton=view.findViewById(R.id.startButton)
         startButton.setOnClickListener {
-
+            val option=NavigationLauncherOptions.builder()
+                .shouldSimulateRoute(true)
+                .build()
+            NavigationLauncher.startNavigation(requireActivity(),option)
         }
         return view
+    }
+    fun getRoute(origin:Point,destination:Point)
+    {
+        NavigationRoute.builder(requireContext()).accessToken(Mapbox.getAccessToken()!!)
+            .origin(origin)
+            .destination(destination)
+            .build()
+            .getRoute(object :Callback<DirectionsResponse>
+            {
+                override fun onFailure(call: Call<DirectionsResponse>, t: Throwable) {
+
+                }
+
+                @SuppressLint("LogNotTimber")
+                override fun onResponse(call: Call<DirectionsResponse>, response: Response<DirectionsResponse>) {
+                    val routeResponse=response?:return
+                    val body=routeResponse.body()?:return
+                    if(body.routes().count()==0)
+                    {
+                        Log.i("HelloMap","No Route Found")
+                        return
+                    }
+                    if(navigationMapRouter!=null)
+                    {
+                        navigationMapRouter?.removeRoute()
+                    }
+                    else
+                    {
+                        navigationMapRouter= NavigationMapRoute(null,mapView,mapboxMap)
+                    }
+                    navigationMapRouter?.addRoute(body.routes().first())
+                }
+
+            })
     }
     override fun onMapReady(mapboxMap: MapboxMap) {
         this.mapboxMap = mapboxMap
@@ -149,6 +196,7 @@ class Location : Fragment(),OnMapReadyCallback, PermissionsListener,MapboxMap.On
     }
 
     override fun onMapClick(point: LatLng): Boolean {
+        Toast.makeText(requireContext(),"${point.latitude} && ${point.longitude}",Toast.LENGTH_LONG).show()
         destinationMarker.let {
             mapboxMap.removeMarker(it)
         }
@@ -156,6 +204,7 @@ class Location : Fragment(),OnMapReadyCallback, PermissionsListener,MapboxMap.On
         destinationMarker=mapboxMap.addMarker(markerOption.position(point))
         destinationPosition= Point.fromLngLat(point.longitude,point.latitude)
         originPosition= Point.fromLngLat(originLocation!!.longitude,originLocation!!.latitude)
+        getRoute(originPosition,destinationPosition)
 
         startButton.isEnabled=true
         startButton.setBackgroundResource(R.color.background)
