@@ -5,6 +5,18 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.Location">
+    <com.mancj.materialsearchbar.MaterialSearchBar
+        android:elevation="1sp"
+        android:layout_width="match_parent"
+        android:layout_margin="10sp"
+        app:mt_hint="Hospital"
+        app:mt_hintColor="@android:color/white"
+        app:mt_searchBarColor="@color/orange"
+        app:mt_highlightedTextColor="@android:color/white"
+        app:mt_placeholder="Search Near By"
+        app:mt_placeholderColor="@android:color/white"
+        app:mt_textColor="@android:color/white"
+        android:layout_height="50dp"/>
     <com.mapbox.mapboxsdk.maps.MapView
         xmlns:mapbox="http://schemas.android.com/apk/res-auto"
         android:background="@color/background"
@@ -14,15 +26,14 @@
         android:layout_width="match_parent"
         mapbox:mapbox_cameraZoom="14"
         android:layout_height="match_parent"/>
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/startButton"
-        android:theme="@style/AppTheme.MaterialButton"
+        android:enabled="false"
+        android:background="@drawable/button_design"
         android:elevation="1sp"
         android:layout_width="match_parent"
         android:textColor="@android:color/white"
         android:text="@string/start_navigation"
-        app:rippleColor="@color/orange2"
-        app:cornerRadius="15dp"
         android:textStyle="bold"
         android:textSize="20sp"
         android:layout_gravity="bottom"
