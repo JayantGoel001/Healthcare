@@ -14,7 +14,20 @@
         mapbox:mapbox_cameraTargetLat="37.7749"
         mapbox:mapbox_cameraTargetLng="-122.4194"
         android:layout_width="match_parent"
-        mapbox:mapbox_cameraZoom="14"
+        mapbox:mapbox_cameraZoom="3"
         android:layout_height="match_parent"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/switch_heatmap_style_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="70dp"
+        android:theme="@style/AppTheme.FAB"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/ic_swap_horiz_black_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="RtlHardcoded" />
 
 </FrameLayout>

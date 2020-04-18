@@ -7,6 +7,12 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="AppTheme.FAB" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/background</item>
+        <item name="colorPrimary">@color/background</item>
+        <item name="colorPrimaryDark">@color/background</item>
+
+    </style>
 
     <style name="noRipple" parent="Theme.MaterialComponents">
         <item name="rippleColor">@android:color/transparent</item>
