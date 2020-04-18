@@ -73,6 +73,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     implementation 'com.mapbox.mapboxsdk:mapbox-android-navigation:0.42.6'
     implementation 'com.github.mancj:MaterialSearchBar:0.7.5'
+    implementation 'com.google.android.libraries.places:places:2.2.0'
     implementation ('com.mapbox.mapboxsdk:mapbox-android-navigation-ui:0.42.6')
             {
                 transitive=true
