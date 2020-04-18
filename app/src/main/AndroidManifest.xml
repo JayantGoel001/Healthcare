@@ -26,18 +26,20 @@
         </activity>
         <activity
             android:name=".SplashActivity"
-            android:screenOrientation="locked">
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
 
         </activity>
         <activity
             android:name=".StatsWork.MoreDetail"
-            android:screenOrientation="locked"
-            tools:ignore="InnerclassSeparator">
+            android:screenOrientation="portrait"
+            tools:ignore="InnerclassSeparator,LockedOrientationActivity">
 
         </activity>
         <activity
             android:name=".MainActivity"
-            android:screenOrientation="locked">
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

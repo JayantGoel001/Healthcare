@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.location.Location
 import android.os.Bundle
 import android.os.Looper.getMainLooper
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +15,19 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.healthcare.LocationChangeListeningActivityLocationCallback
 import com.example.healthcare.R
-import com.google.android.material.button.MaterialButton
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.AutocompletePrediction
+import com.google.android.libraries.places.api.model.AutocompleteSessionToken
+import com.google.android.libraries.places.api.model.TypeFilter
+import com.google.android.libraries.places.api.net.FindAutocompletePredictionsRequest
+import com.google.android.libraries.places.api.net.FindAutocompletePredictionsResponse
+import com.google.android.libraries.places.api.net.PlacesClient
+import com.mancj.materialsearchbar.MaterialSearchBar
 import com.mapbox.android.core.location.LocationEngine
 import com.mapbox.android.core.location.LocationEngineProvider
 import com.mapbox.android.core.location.LocationEngineRequest
@@ -24,8 +38,6 @@ import com.mapbox.geojson.Point
 import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.annotations.Marker
 import com.mapbox.mapboxsdk.annotations.MarkerOptions
-import com.mapbox.mapboxsdk.camera.CameraPosition
-import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
 import com.mapbox.mapboxsdk.geometry.LatLng
 import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions
 import com.mapbox.mapboxsdk.location.modes.CameraMode
@@ -41,7 +53,7 @@ import retrofit2.Response
 
 
 @Suppress("DEPRECATION")
-class Location : Fragment(),OnMapReadyCallback, PermissionsListener,MapboxMap.OnMapClickListener{
+class Location : Fragment(),OnMapReadyCallback, PermissionsListener{
     private lateinit var mapView: MapView
     lateinit var mapboxMap: MapboxMap
     private var permissionsManager: PermissionsManager? = null
@@ -49,12 +61,7 @@ class Location : Fragment(),OnMapReadyCallback, PermissionsListener,MapboxMap.On
     private val callback: LocationChangeListeningActivityLocationCallback = LocationChangeListeningActivityLocationCallback(this)
     private val DEFAULT_INTERVAL_IN_MILLISECONDS = 1000L
     private val DEFAULT_MAX_WAIT_TIME = DEFAULT_INTERVAL_IN_MILLISECONDS * 5
-    private lateinit var startButton:Button
-    private lateinit var originPosition: Point
-    lateinit var destinationPosition:Point
-    lateinit var destinationMarker:Marker
-    private var originLocation:Location?=null
-    private var navigationMapRouter:NavigationMapRoute?=null
+    private var mLastKnownLocation:Location?=null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Mapbox.getInstance(requireContext(), getString(R.string.mapbox_access_token))
@@ -62,48 +69,7 @@ class Location : Fragment(),OnMapReadyCallback, PermissionsListener,MapboxMap.On
         mapView = view.findViewById(R.id.mapView)
         mapView.onCreate(savedInstanceState)
         mapView.getMapAsync(this)
-        startButton=view.findViewById(R.id.startButton)
-        startButton.setOnClickListener {
-            val option=NavigationLauncherOptions.builder()
-                .shouldSimulateRoute(true)
-                .build()
-            NavigationLauncher.startNavigation(requireActivity(),option)
-        }
         return view
-    }
-    fun getRoute(origin:Point,destination:Point)
-    {
-        NavigationRoute.builder(requireContext()).accessToken(Mapbox.getAccessToken()!!)
-            .origin(origin)
-            .destination(destination)
-            .build()
-            .getRoute(object :Callback<DirectionsResponse>
-            {
-                override fun onFailure(call: Call<DirectionsResponse>, t: Throwable) {
-
-                }
-
-                @SuppressLint("LogNotTimber")
-                override fun onResponse(call: Call<DirectionsResponse>, response: Response<DirectionsResponse>) {
-                    val routeResponse=response?:return
-                    val body=routeResponse.body()?:return
-                    if(body.routes().count()==0)
-                    {
-                        Log.i("HelloMap","No Route Found")
-                        return
-                    }
-                    if(navigationMapRouter!=null)
-                    {
-                        navigationMapRouter?.removeRoute()
-                    }
-                    else
-                    {
-                        navigationMapRouter= NavigationMapRoute(null,mapView,mapboxMap)
-                    }
-                    navigationMapRouter?.addRoute(body.routes().first())
-                }
-
-            })
     }
     override fun onMapReady(mapboxMap: MapboxMap) {
         this.mapboxMap = mapboxMap
@@ -129,7 +95,7 @@ class Location : Fragment(),OnMapReadyCallback, PermissionsListener,MapboxMap.On
             locationComponent.cameraMode = CameraMode.TRACKING
             locationComponent.renderMode = RenderMode.COMPASS
             initLocationEngine()
-            originLocation=locationComponent.lastKnownLocation
+            mLastKnownLocation=locationComponent.lastKnownLocation
         } else {
             permissionsManager = PermissionsManager(this)
             permissionsManager!!.requestLocationPermissions(requireActivity())
@@ -138,7 +104,6 @@ class Location : Fragment(),OnMapReadyCallback, PermissionsListener,MapboxMap.On
     override fun onExplanationNeeded(permissionsToExplain: List<String?>?) {
         Toast.makeText(requireContext(), "User Location Granted", Toast.LENGTH_LONG).show()
     }
-
     @SuppressLint("MissingPermission")
     private fun initLocationEngine() {
         locationEngine = LocationEngineProvider.getBestLocationEngine(requireContext())
@@ -159,10 +124,7 @@ class Location : Fragment(),OnMapReadyCallback, PermissionsListener,MapboxMap.On
             Toast.makeText(requireContext(), "User Location Permission Not Granted", Toast.LENGTH_LONG).show()
         }
     }
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        super.onViewCreated(view, savedInstanceState)
-    }
     override fun onStart() {
         super.onStart()
         mapView.onStart()
@@ -195,19 +157,4 @@ class Location : Fragment(),OnMapReadyCallback, PermissionsListener,MapboxMap.On
         mapView.onSaveInstanceState(outState)
     }
 
-    override fun onMapClick(point: LatLng): Boolean {
-        Toast.makeText(requireContext(),"${point.latitude} && ${point.longitude}",Toast.LENGTH_LONG).show()
-        destinationMarker.let {
-            mapboxMap.removeMarker(it)
-        }
-        val markerOption=MarkerOptions()
-        destinationMarker=mapboxMap.addMarker(markerOption.position(point))
-        destinationPosition= Point.fromLngLat(point.longitude,point.latitude)
-        originPosition= Point.fromLngLat(originLocation!!.longitude,originLocation!!.latitude)
-        getRoute(originPosition,destinationPosition)
-
-        startButton.isEnabled=true
-        startButton.setBackgroundResource(R.color.background)
-        return true
-    }
 }

@@ -4,22 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/background"
     tools:context=".fragments.Location">
-    <com.mancj.materialsearchbar.MaterialSearchBar
-        android:id="@+id/search_bar"
-        app:mt_navIconEnabled="true"
-        app:mt_navIconTint="@android:color/white"
-        android:elevation="1sp"
-        android:layout_width="match_parent"
-        android:layout_margin="10sp"
-        app:mt_hint="Hospital"
-        app:mt_hintColor="@android:color/white"
-        app:mt_searchBarColor="@color/orange"
-        app:mt_highlightedTextColor="@android:color/white"
-        app:mt_placeholder="Search Near By"
-        app:mt_placeholderColor="@android:color/white"
-        app:mt_textColor="@android:color/white"
-        android:layout_height="50dp"/>
+
     <com.mapbox.mapboxsdk.maps.MapView
         xmlns:mapbox="http://schemas.android.com/apk/res-auto"
         android:background="@color/background"
@@ -29,21 +16,5 @@
         android:layout_width="match_parent"
         mapbox:mapbox_cameraZoom="14"
         android:layout_height="match_parent"/>
-    <Button
-        android:id="@+id/startButton"
-        android:enabled="false"
-        android:background="@drawable/button_design"
-        android:elevation="1sp"
-        android:layout_width="match_parent"
-        android:textColor="@android:color/white"
-        android:text="@string/start_navigation"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:layout_gravity="bottom"
-        android:layout_marginTop="18dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginEnd="18dp"
-        android:layout_marginBottom="80dp"
-        android:layout_height="wrap_content"/>
 
 </FrameLayout>
