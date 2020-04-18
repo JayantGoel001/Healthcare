@@ -6,6 +6,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.Location">
     <com.mancj.materialsearchbar.MaterialSearchBar
+        android:id="@+id/search_bar"
+        app:mt_navIconEnabled="true"
+        app:mt_navIconTint="@android:color/white"
         android:elevation="1sp"
         android:layout_width="match_parent"
         android:layout_margin="10sp"
