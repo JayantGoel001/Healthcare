@@ -11,17 +11,23 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.ResultReceiver
 import android.provider.MediaStore
 import android.telephony.TelephonyManager
 import android.text.InputType
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.healthcare.R
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationCallback
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.address_dialog.view.*
 import kotlinx.android.synthetic.main.fab_corona.view.*
@@ -39,6 +45,20 @@ class Profile: Fragment(){
     private var  ProfileImage:CircleImageView?=null
     private var imageUri: Uri?=null
     private var mPhoneNumber: String="9999900000"
+
+    private val fusedLocationClient: FusedLocationProviderClient? = null
+
+    private val LOCATION_PERMISSION_REQUEST_CODE = 2
+
+   // private val addressResultReceiver: LocationAddressResultReceiver? = null
+
+    private val currentAddTv: TextView? = null
+
+    private val currentLocation: Location? = null
+
+    private val locationCallback: LocationCallback? = null
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
@@ -257,3 +277,17 @@ class Profile: Fragment(){
     }
 
 }
+//class LocationAddressResultReceiver(handler: Handler?) : ResultReceiver(handler)
+//{
+//    @SuppressLint("LogNotTimber")
+//    override fun onReceiveResult(resultCode: Int, resultData: Bundle) {
+//        if (resultCode == 0) {
+//            Log.d("Address", "Location null retrying")
+//            getAddress()
+//        }
+//        val currentAdd = resultData.getString("address_result")
+//        currentAdd?.let { showResults(it) }
+//    }
+//    private fun showResults(currentAdd: String):String {
+//        return currentAdd
+//    }}
