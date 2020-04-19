@@ -20,12 +20,11 @@
         app:button_color="@color/bold_color"
         app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior"
         app:icon_five="@drawable/ic_person_black_24dp"
-        app:icon_four="@drawable/ic_location_city_black_24dp"
         app:icon_one="@drawable/analysis"
-        app:icon_three="@drawable/news"
-        app:icon_two="@drawable/enquire"
-        app:number_of_tabs="five"
-        app:starting_position="three"
+        app:icon_three="@drawable/ic_location_city_black_24dp"
+        app:icon_two="@drawable/news"
+        app:number_of_tabs="four"
+        app:starting_position="two"
         app:tab_color="@color/colorPrimary" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

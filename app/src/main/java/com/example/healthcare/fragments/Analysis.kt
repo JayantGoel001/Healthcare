@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
@@ -32,10 +33,12 @@ class Analysis : Fragment() {
     val url = "https://api.covid19india.org/data.json"
     lateinit var mcontext: Context
     lateinit var que: RequestQueue
+    private lateinit var grid:ImageButton
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view=inflater.inflate(R.layout.fragment_analysis, container, false)
         mcontext = activity!!.applicationContext
         que = Volley.newRequestQueue(mcontext)
+        grid=view.findViewById(R.id.switchBetweenGridLin)
         loadData(view)
         return view
     }
@@ -55,7 +58,7 @@ class Analysis : Fragment() {
                 if(LayoutType==0)
                 {
                     view.recyclerView.layoutManager = LinearLayoutManager(mcontext)
-                    switchBetweenGridLin.setBackgroundResource(R.drawable.ic_grid_on_black_24dp)
+                    grid.setBackgroundResource(R.drawable.ic_grid_on_black_24dp)
                     adapter = My_adapter(mcontext, list, vib,LayoutType)
                     view.recyclerView.visibility = RecyclerView.VISIBLE
                     view.recyclerView.adapter = adapter
