@@ -38,4 +38,8 @@
     <string name="enter_phone_number">Enter Phone Number</string>
     <string name="mapbox_access_token" tools:ignore="TypographyDashes">pk.eyJ1IjoiamF5YW50Z29lbDAwMSIsImEiOiJjazU5d2NqcmoxMTY0M2ZsajlqaHhubThtIn0.1_2GclqHSeQYaCg1B4-3VA</string>
     <string name="start_navigation">Start Navigation</string>
+    <string name="enter_email_address">Enter Email Address</string>
+    <string name="password">Password</string>
+    <string name="log_in_sign_up">Log In/Sign Up</string>
+    <string name="name">Name</string>
 </resources>

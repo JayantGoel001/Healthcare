@@ -86,53 +86,7 @@
         android:paddingBottom="50dp">
 
         <LinearLayout
-            android:id="@+id/ll1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="30dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:layout_marginEnd="10dp"
-                android:contentDescription="@string/description"
-                android:src="@drawable/call" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/phone"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:importantForAutofill="no"
-                android:textColorHint="#888"
-                app:boxBackgroundMode="outline"
-                app:boxCollapsedPaddingTop="2dp"
-                app:boxCornerRadiusBottomEnd="10dp"
-                app:boxCornerRadiusBottomStart="10dp"
-                app:boxCornerRadiusTopEnd="10dp"
-                app:boxCornerRadiusTopStart="10dp">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hapticFeedbackEnabled="true"
-                    android:hint="@string/enter_phone_number"
-                    android:inputType="phone"
-                    android:paddingStart="15dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:textSize="20dp"
-                    tools:ignore="RtlSymmetry,SpUsage" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll2"
+            android:id="@+id/ll0"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -148,14 +102,13 @@
                 android:layout_gravity="center"
                 android:layout_marginEnd="10dp"
                 android:contentDescription="@string/description"
-                android:src="@drawable/otp" />
+                android:src="@drawable/ic_person_black_24dp" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/otp"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:hint="@string/enter_otp"
-                android:inputType="number"
+                android:hint="@string/name"
+                android:inputType="text"
                 android:textColorHint="#888"
                 app:boxBackgroundMode="outline"
                 app:boxCollapsedPaddingTop="2dp"
@@ -165,10 +118,107 @@
                 app:boxCornerRadiusTopStart="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/name_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hapticFeedbackEnabled="true"
-                    android:inputType="number"
+                    android:inputType="text"
+                    android:paddingStart="15dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:textSize="20dp"
+                    tools:ignore="RtlSymmetry,SpUsage" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@string/description"
+                android:src="@drawable/ic_inbox_black_24dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:importantForAutofill="no"
+                android:textColorHint="#888"
+                app:boxBackgroundMode="outline"
+                app:boxCollapsedPaddingTop="2dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/email_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hapticFeedbackEnabled="true"
+                    android:hint="@string/enter_email_address"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="15dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
+                    android:textSize="20dp"
+                    tools:ignore="RtlSymmetry,SpUsage" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="23dp"
+            android:layout_marginEnd="30dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            tools:ignore="NotSibling">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:contentDescription="@string/description"
+                android:src="@drawable/otp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:hint="@string/password"
+                android:inputType="numberPassword"
+                app:passwordToggleEnabled="true"
+                android:textColorHint="#888"
+                app:boxBackgroundMode="outline"
+                app:boxCollapsedPaddingTop="2dp"
+                app:boxCornerRadiusBottomEnd="10dp"
+                app:boxCornerRadiusBottomStart="10dp"
+                app:boxCornerRadiusTopEnd="10dp"
+                app:boxCornerRadiusTopStart="10dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hapticFeedbackEnabled="true"
+                    android:inputType="numberPassword"
                     android:paddingStart="15dp"
                     android:paddingTop="12dp"
                     android:paddingBottom="12dp"
@@ -212,7 +262,7 @@
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/getCode"
+        android:id="@+id/login"
         android:layout_width="200dp"
         android:layout_height="60dp"
         android:layout_below="@+id/progressBar3"
@@ -222,7 +272,7 @@
         android:layout_marginEnd="35dp"
         android:background="@drawable/btn_log_bg"
         android:elevation="0dp"
-        android:text="@string/get_code"
+        android:text="@string/log_in_sign_up"
         android:textColor="@color/black"
         android:textSize="20sp" />
 

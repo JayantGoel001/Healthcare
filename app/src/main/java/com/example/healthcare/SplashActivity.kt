@@ -13,7 +13,7 @@ class SplashActivity : AppCompatActivity() {
         val splashScreen = object : Thread() {
             override fun run() {
                 try {
-                    sleep(6000)
+                    sleep(5000)
                     val intent=Intent(this@SplashActivity, MainActivity::class.java)
                     intent.flags=Intent.FLAG_ACTIVITY_CLEAR_TASK
                     startActivity(intent)
