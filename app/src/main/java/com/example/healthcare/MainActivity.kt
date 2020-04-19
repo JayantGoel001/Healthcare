@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
 
         val fragmentList: ArrayList<Fragment> = ArrayList()
         fragmentList.add(Analysis())
-        fragmentList.add(Enquire())
         fragmentList.add(News())
         fragmentList.add(Location())
         fragmentList.add(Profile())
@@ -31,8 +30,7 @@ class MainActivity : AppCompatActivity() {
         val viewPager: ViewPager = findViewById(R.id.viewPager)
 
         tabLayout.initialize(viewPager, supportFragmentManager, fragmentList, savedInstanceState)
-        tabLayout.setTabFourIcon(R.drawable.ic_location_city_black_24dp)
-        tabLayout.setTabFiveIcon(R.drawable.ic_person_black_24dp)
+        tabLayout.setTabFourIcon(R.drawable.ic_person_black_24dp)
 
 
     }

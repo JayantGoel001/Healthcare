@@ -1,7 +1,9 @@
 package com.example.healthcare.fragments
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.location.Location
+import android.net.Uri
 import android.os.Bundle
 import android.os.Looper.getMainLooper
 import android.util.Log
@@ -9,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.healthcare.LocationChangeListeningActivityLocationCallback
 import com.example.healthcare.R
@@ -28,9 +31,14 @@ import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import com.mapbox.mapboxsdk.maps.Style
 import com.mapbox.mapboxsdk.style.expressions.Expression
 import com.mapbox.mapboxsdk.style.expressions.Expression.*
+import com.mapbox.mapboxsdk.style.layers.CircleLayer
 import com.mapbox.mapboxsdk.style.layers.HeatmapLayer
 import com.mapbox.mapboxsdk.style.layers.PropertyFactory.*
+import com.mapbox.mapboxsdk.style.layers.SymbolLayer
+import com.mapbox.mapboxsdk.style.sources.GeoJsonOptions
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
+import com.mapbox.mapboxsdk.utils.BitmapUtils
+import org.json.JSONObject
 import java.net.URI
 import java.net.URISyntaxException
 
@@ -66,17 +74,27 @@ class Location : Fragment(),OnMapReadyCallback, PermissionsListener{
     @SuppressLint("LogNotTimber")
     override fun onMapReady(mapboxMap: MapboxMap) {
         this.mapboxMap = mapboxMap
-        mapboxMap.setStyle(Style.MAPBOX_STREETS) {
-                style -> enableLocationComponent(style)
+        mapboxMap.setStyle(Style.MAPBOX_STREETS) { style ->
+            enableLocationComponent(style)
+            addClusteredGeoJsonSource(style)
+            BitmapUtils.getBitmapFromDrawable(resources.getDrawable(R.drawable.ic_arrow_head))?.let {
+                    style.addImage(
+                        "cross-icon-id",
+                        it,
+                        true
+                    )
+                }
+
             try {
                 style.addSource(
                     GeoJsonSource(
                         HEATMAP_SOURCE_ID,
-                        (requireContext().assets.open( "datacorona.json" )).read().toString()
-                )
+                        URI("https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson")
+                        //(requireContext().assets.open("datacorona.json")).read().toString()
+                    )
                 )
             } catch (exception: URISyntaxException) {
-                Log.i("TAGA",exception.toString())
+                Log.i("TAGA", exception.toString())
             }
             initHeatmapColors()
             initHeatmapRadiusStops()
@@ -93,14 +111,14 @@ class Location : Fragment(),OnMapReadyCallback, PermissionsListener{
                     heatmapRadius(listOfHeatmapRadiusStops[index]),
                     heatmapIntensity(listOfHeatmapIntensityStops[index])
                 )
+
+
             }
+            val uiSettings = mapboxMap.uiSettings
+            uiSettings.isCompassEnabled = true
 
 
         }
-        val uiSettings=mapboxMap.uiSettings
-        uiSettings.isCompassEnabled=true
-
-
     }
     private fun enableLocationComponent(loadedMapStyle: Style) {
 // Check if permissions are enabled and if not request
@@ -190,8 +208,11 @@ class Location : Fragment(),OnMapReadyCallback, PermissionsListener{
     }
     private fun initHeatmapColors() {
         listOfHeatmapColors.addAll(
-            arrayListOf(interpolate(linear(), heatmapDensity(), literal(0.01), rgba(0, 0, 0, 0.01), literal(0.25), rgba(224, 176, 63, 0.5), literal(0.5), rgb(247, 252, 84), literal(0.75), rgb(186, 59, 30), literal(0.9), rgb(255, 0, 0)),
-            interpolate(linear(), heatmapDensity(), literal(0.01), rgba(255, 255, 255, 0.4), literal(0.25), rgba(4, 179, 183, 1.0), literal(0.5), rgba(204, 211, 61, 1.0), literal(0.75), rgba(252, 167, 55, 1.0), literal(1), rgba(255, 78, 70, 1.0)),
+            arrayListOf(
+            interpolate(
+            linear(), heatmapDensity(), literal(0.01), rgba(0, 0, 0, 0.01), literal(0.25), rgba(224, 176, 63, 0.5), literal(0.5), rgb(247, 252, 84), literal(0.75), rgb(186, 59, 30), literal(0.9), rgb(255, 0, 0)),
+            interpolate(
+            linear(), heatmapDensity(), literal(0.01), rgba(255, 255, 255, 0.4), literal(0.25), rgba(4, 179, 183, 1.0), literal(0.5), rgba(204, 211, 61, 1.0), literal(0.75), rgba(252, 167, 55, 1.0), literal(1), rgba(255, 78, 70, 1.0)),
             interpolate(linear(), heatmapDensity(), literal(0.01), rgba(12, 182, 253, 0.0), literal(0.25), rgba(87, 17, 229, 0.5), literal(0.5), rgba(255, 0, 0, 1.0),literal(0.75), rgba(229, 134, 15, 0.5), literal(1), rgba(230, 255, 55, 0.6)),
             interpolate(linear(), heatmapDensity(), literal(0.01), rgba(135, 255, 135, 0.2), literal(0.5), rgba(255, 99, 0, 0.5), literal(1), rgba(47, 21, 197, 0.2)),
             interpolate(linear(), heatmapDensity(), literal(0.01), rgba(4, 0, 0, 0.2), literal(0.25), rgba(229, 12, 1, 1.0), literal(0.30), rgba(244, 114, 1, 1.0), literal(0.40), rgba(255, 205, 12, 1.0), literal(0.50), rgba(255, 229, 121, 1.0), literal(1), rgba(255, 253, 244, 1.0)),
@@ -204,7 +225,6 @@ class Location : Fragment(),OnMapReadyCallback, PermissionsListener{
             )
         )
     }
-
     private fun initHeatmapRadiusStops() {
         listOfHeatmapRadiusStops.addAll(
             arrayListOf(
@@ -223,7 +243,7 @@ class Location : Fragment(),OnMapReadyCallback, PermissionsListener{
     }
     private fun initHeatmapIntensityStops() {
         listOfHeatmapIntensityStops = ArrayList(arrayListOf(
-            45f,  // 1
+            0.6f,  // 1
             0.3f,  // 2
             1f,  // 3
             1f,  // 4
@@ -236,5 +256,84 @@ class Location : Fragment(),OnMapReadyCallback, PermissionsListener{
             0.25f,  // 11
             0.5f
         ))
+    }
+
+
+
+    @SuppressLint("LogNotTimber")
+    private fun addClusteredGeoJsonSource(loadedMapStyle: Style ) {
+
+        try {
+            loadedMapStyle.addSource(
+                GeoJsonSource("earthquakes",
+                    URI("https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson"),
+                    //requireContext().assets.open( "datacorona2.geojson" ).toString(),
+               GeoJsonOptions() .withCluster(true).withClusterMaxZoom(14).withClusterRadius(50))
+            )
+        } catch (uriSyntaxException:URISyntaxException ) {
+            Log.e("Error", uriSyntaxException.localizedMessage!!);
+        }
+
+        val unclustered = SymbolLayer("unclustered-points", "earthquakes")
+
+        unclustered.setProperties(
+            iconImage("cross-icon-id"),
+            iconSize(
+                division(
+                    get("mag"), literal(4.0f)
+                )
+            ),
+            iconColor(
+                interpolate(
+                    exponential(1), get("mag"),
+                    stop(2.0, rgb(0, 255, 0)),
+                    stop(4.5, rgb(0, 0, 255)),
+                    stop(7.0, rgb(255, 0, 0))
+                )
+            )
+        )
+        unclustered.setFilter(has("mag"))
+        loadedMapStyle.addLayer(unclustered)
+
+
+        val layers = arrayOf(
+            intArrayOf(
+                150,
+                ContextCompat.getColor(requireContext(), R.color.red)
+            ),
+            intArrayOf(20, ContextCompat.getColor(requireContext(), R.color.green)),
+            intArrayOf(0, ContextCompat.getColor(requireContext(), R.color.mapbox_blue))
+        )
+
+        for (i in layers.indices) {
+            val circles = CircleLayer("cluster-$i", "earthquakes")
+            circles.setProperties(
+                circleColor(layers[i][1]),
+                circleRadius(18f)
+            )
+            val pointCount = toNumber(get("point_count"))
+
+            circles.setFilter(
+                if (i == 0) all(
+                    has("point_count"),
+                    gte(pointCount, literal(layers[i][0]))
+                ) else all(
+                    has("point_count"),
+                    gte(pointCount, literal(layers[i][0])),
+                    lt(pointCount, literal(layers[i - 1][0]))
+                )
+            )
+            loadedMapStyle.addLayer(circles)
+        }
+
+        val count:SymbolLayer  = SymbolLayer("count", "earthquakes");
+        count.setProperties(
+            textField(Expression.toString(get("point_count"))),
+            textSize(12f),
+            textColor(Color.WHITE),
+            textIgnorePlacement(true),
+            textAllowOverlap(true)
+        )
+        loadedMapStyle.addLayer(count)
     }
 }
