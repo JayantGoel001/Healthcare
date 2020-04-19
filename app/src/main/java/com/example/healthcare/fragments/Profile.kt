@@ -1,23 +1,24 @@
 package com.example.healthcare.fragments
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity.RESULT_OK
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.telephony.TelephonyManager
 import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.healthcare.R
@@ -29,6 +30,7 @@ import kotlinx.android.synthetic.main.layout_dialog.view.*
 import kotlinx.android.synthetic.main.layout_dialog.view.error
 import kotlinx.android.synthetic.main.layout_dialog.view.id_cancel
 import kotlinx.android.synthetic.main.layout_dialog.view.id_saveChanges
+
 @Suppress("DEPRECATION")
 @SuppressLint("SetTextI18n","InflateParams")
 class Profile: Fragment(){
@@ -36,6 +38,7 @@ class Profile: Fragment(){
     private val pickImagePermission=1001
     private var  ProfileImage:CircleImageView?=null
     private var imageUri: Uri?=null
+    private var mPhoneNumber: String="9999900000"
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_profile, container, false)
     }
@@ -189,8 +192,19 @@ class Profile: Fragment(){
 
 
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         ProfileImage=view.findViewById(R.id.Profile_Image)
+        val sharedPreferences=requireContext().getSharedPreferences("name_email_pass", Context.MODE_PRIVATE)
+        val email=sharedPreferences.getString("email","1234")!!
+        val name=sharedPreferences.getString("name","!!!!")!!
+        id_name.text=name
+        id_mail.text=email
+
+         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_PHONE_NUMBERS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(arrayOf(Manifest.permission.READ_PHONE_NUMBERS,Manifest.permission.READ_PHONE_STATE),12)
+        }
+        id_phone.text=mPhoneNumber
         if(ProfileImage!=null && imageUri!=null)
         {
             val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(activity!!.contentResolver , imageUri)
@@ -227,12 +241,18 @@ class Profile: Fragment(){
         startActivityForResult(intent,PICK_IMAGE)
     }
 
+    @SuppressLint("MissingPermission", "HardwareIds")
     override  fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(resultCode==RESULT_OK && requestCode==PICK_IMAGE){
             if (data != null) {
                 imageUri=data.data
                 ProfileImage!!.setImageURI(data.data)
             }
+        }
+        if (resultCode==12)
+        {
+            val tMgr: TelephonyManager = requireContext().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+            mPhoneNumber=tMgr.line1Number
         }
     }
 
