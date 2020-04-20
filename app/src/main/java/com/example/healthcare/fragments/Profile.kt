@@ -224,7 +224,7 @@ class Profile: Fragment(){
          if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_PHONE_NUMBERS) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(arrayOf(Manifest.permission.READ_PHONE_NUMBERS,Manifest.permission.READ_PHONE_STATE),12)
         }
-        id_phone.text=mPhoneNumber
+        //id_phone.text=mPhoneNumber
         if(ProfileImage!=null && imageUri!=null)
         {
             val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(activity!!.contentResolver , imageUri)
@@ -261,7 +261,7 @@ class Profile: Fragment(){
         startActivityForResult(intent,PICK_IMAGE)
     }
 
-    @SuppressLint("MissingPermission", "HardwareIds")
+    @SuppressLint("MissingPermission", "HardwareIds", "LogNotTimber")
     override  fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(resultCode==RESULT_OK && requestCode==PICK_IMAGE){
             if (data != null) {
@@ -273,6 +273,8 @@ class Profile: Fragment(){
         {
             val tMgr: TelephonyManager = requireContext().getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
             mPhoneNumber=tMgr.line1Number
+            id_phone.text=mPhoneNumber
+            Log.i("Phonenum",mPhoneNumber)
         }
     }
 
