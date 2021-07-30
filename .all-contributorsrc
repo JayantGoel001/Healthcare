@@ -18,6 +18,20 @@
         "doc",
         "content"
       ]
+    },
+    {
+      "login": "Kushal-Gera",
+      "name": "Kushal Gera",
+      "avatar_url": "https://avatars.githubusercontent.com/u/53964520?v=4",
+      "profile": "https://github.com/Kushal-Gera",
+      "contributions": [
+        "code",
+        "ideas",
+        "test",
+        "maintenance",
+        "doc",
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
