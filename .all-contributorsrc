@@ -32,6 +32,20 @@
         "doc",
         "content"
       ]
+    },
+    {
+      "login": "yashi12",
+      "name": "Yashi Agarwal",
+      "avatar_url": "https://avatars.githubusercontent.com/u/46988943?v=4",
+      "profile": "https://yashi12.github.io",
+      "contributions": [
+        "code",
+        "ideas",
+        "test",
+        "maintenance",
+        "doc",
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
