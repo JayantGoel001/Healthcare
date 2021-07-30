@@ -46,6 +46,20 @@
         "doc",
         "content"
       ]
+    },
+    {
+      "login": "uditjain100",
+      "name": "UDIT JAIN",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54267436?v=4",
+      "profile": "https://creasedmeteor.herokuapp.com/",
+      "contributions": [
+        "code",
+        "ideas",
+        "test",
+        "maintenance",
+        "doc",
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
